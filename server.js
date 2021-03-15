@@ -144,9 +144,22 @@ function generateTeam() {
       break;
 
       case "None":
-      console.log(team[0]['name']);
-      // generateHTML(team);
       //generate the html if they click none
+      console.log(generateHtml(...team));
+      // const init = () => {
+      //   generateHtml(...team).then((data) => {
+      //     try {
+      //       const html = generateHTML(data);
+      //       fs.writeFileSync('index.html', html);
+      //       console.log('Successfully wrote to index.html');
+      //     } catch (error) {
+      //       console.log(error);
+      //     }
+      //   });
+      
+      // };
+      
+      // init();
       break;
     }
   })
@@ -156,7 +169,7 @@ generateTeam();
 
 
 
-const generateHtml = () => {
+const generateHtml = (data) => {
   return `<!doctype html>
   <html lang="en">
   
@@ -189,12 +202,12 @@ const generateHtml = () => {
           <div class=col-2>
               <div class="card bg-light mb-3" style="max-width: 18rem;" id="manager">
                   <div class="card-header">
-                      <p>${team.name}</p>
-                      <p>${team.role}</p>
+                      <p>${data.name}</p>
+                      <p>${data.role}</p>
                   </div>
                   <div class="card-body">
                       <h5 class="card-title">Light card title</h5>
-                      <p class="card-text">${team.email}, ${team.id}, ${team.officeNumber}</p>
+                      <p class="card-text">${data.email}, ${data.id}, ${data.officeNumber}</p>
                   </div>
               </div>
           </div>
@@ -206,12 +219,12 @@ const generateHtml = () => {
           <div class=col-2>
               <div class="card bg-light mb-3" style="max-width: 18rem;" id="engineer1">
                   <div class="card-header">
-                      <p>${team.name}</p>
-                      <p>${team.role}</p>
+                      <p>${data.name}</p>
+                      <p>${data.role}</p>
                   </div>
                   <div class="card-body">
                       <h5 class="card-title">Light card title</h5>
-                      <p class="card-text">${team.email}, ${team.id}, ${team.gitHub}</p>
+                      <p class="card-text">${data.email}, ${data.id}, ${data.gitHub}</p>
                   </div>
               </div>
           </div>
@@ -223,12 +236,12 @@ const generateHtml = () => {
           <div class=col-2>
               <div class="card bg-light mb-3" style="max-width: 18rem;" id="engineer1">
                   <div class="card-header">
-                      <p>${team.name}</p>
-                      <p>${team.role}</p>
+                      <p>${data.name}</p>
+                      <p>${data.role}</p>
                   </div>
                   <div class="card-body">
                       <h5 class="card-title">Light card title</h5>
-                      <p class="card-text">${team.email}, ${team.id}, ${team.gitHub}</p>
+                      <p class="card-text">${data.email}, ${data.id}, ${data.gitHub}</p>
                   </div>
               </div>
           </div>
@@ -248,12 +261,12 @@ const generateHtml = () => {
           <div class=col-2>
               <div class="card bg-light mb-3" style="max-width: 18rem;" id="engineer1">
                   <div class="card-header">
-                      <p>${team.name}</p>
-                      <p>${team.role}</p>
+                      <p>${data.name}</p>
+                      <p>${data.role}</p>
                   </div>
                   <div class="card-body">
                       <h5 class="card-title">Light card title</h5>
-                      <p class="card-text">${team.email}, ${team.id}, ${team.gitHub}</p>
+                      <p class="card-text">${data.email}, ${data.id}, ${data.gitHub}</p>
                   </div>
               </div>
           </div>
@@ -262,12 +275,12 @@ const generateHtml = () => {
           <div class = "col-2">
               <div class="card bg-light mb-3" style="max-width: 18rem;" id="intern">
                   <div class="card-header">
-                      <p>${team.name}</p>
-                      <p>${team.role}</p>
+                      <p>${data.name}</p>
+                      <p>${data.role}</p>
                   </div>
                   <div class="card-body">
                       <h5 class="card-title">Light card title</h5>
-                      <p class="card-text">${team.email}, ${team.id}, ${team.school}</p>
+                      <p class="card-text">${data.email}, ${data.id}, ${data.school}</p>
                   </div>
               </div>   
           </div>
@@ -281,25 +294,32 @@ const generateHtml = () => {
   </body>
   
   </html>`
+  .then((data) => {
+    const filename = `${data.name.toLowerCase().split(' ').join('')}.json`;
+
+    fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
+      err ? console.log(err) : console.log('Success!')
+    );
+  });
 }
 
 
 
 
-const init = () => {
-  generateHtml(...team).then((data) => {
-    try {
-      const html = generateHTML(...team);
-      fs.writeFileSync('index.html', html);
-      console.log('Successfully wrote to index.html');
-    } catch (error) {
-      console.log(error);
-    }
-  });
+// const init = () => {
+//   generateHtml(...team).then((data) => {
+//     try {
+//       const html = generateHTML(data);
+//       fs.writeFileSync('index.html', html);
+//       console.log('Successfully wrote to index.html');
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   });
 
-};
+// };
 
-init();
+// init();
 
 
 
