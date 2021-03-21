@@ -1,6 +1,9 @@
    # Team Profile Generator 
     ## Description
     This application will allow users to enter information about their team when prompted with a few questions. After answering questions such as: name, role, office number, etc... the app will generate an html page for each team member.
+
+    [Click here to view video of an example](https://drive.google.com/file/d/1AyqZAPiX1oQ8WzQvpH1ZBwh3oIYTwL_I/view?usp=sharing)
+
     ## Table of Contents
       1. Instructions
       2. User Story
